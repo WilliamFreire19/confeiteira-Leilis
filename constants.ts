@@ -15,9 +15,12 @@ export const PRODUCTS: Product[] = [
   { id: 10, name: "Kit 10", description: "7 Kg bolo + 150 Brigadeiros + 150 Beijinhos + 800 Salgados", price: 1050.00 },
 ];
 
+// Massa Colorida removida daqui pois tem lógica de preço dinâmica
 export const ADDONS: AddOn[] = [
-  { id: 'topper', name: 'Topper', price: 30.00 },
+  { id: 'topper_simples', name: 'Topper Simples', price: 30.00 },
+  { id: 'topper_3d', name: 'Topper 3D', price: 50.00 },
   { id: 'papel_arroz', name: 'Papel Arroz', price: 20.00 },
+  { id: 'raspas', name: 'Raspas de Chocolate Nobre', price: 8.00 },
   { id: 'geleia', name: 'Geleia', price: 12.00 },
   { id: 'glitter', name: 'Glitter', price: 8.00 },
 ];

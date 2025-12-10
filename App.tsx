@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { InfoSection } from './components/InfoSection';
 import { ProductGrid } from './components/ProductGrid';
 import { LocationSection } from './components/LocationSection';
 import { Footer } from './components/Footer';
@@ -22,10 +23,11 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col font-body text-chocolate">
       <Header />
       <main className="flex-grow">
         <Hero />
+        <InfoSection />
         <ProductGrid onOrderClick={handleOpenModal} />
         <LocationSection />
       </main>

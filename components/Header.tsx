@@ -11,15 +11,17 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm border-b border-pink-100">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-soft-pink">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Cake className="h-8 w-8 text-bubble-pink" />
-            <span className="font-cute text-2xl text-bubble-pink font-bold">
-              Confeitaria da Lélis Reis
+            <div className="bg-soft-pink p-2 rounded-full">
+              <Cake className="h-6 w-6 text-chocolate" />
+            </div>
+            <span className="font-cute text-2xl text-chocolate font-bold">
+              Confeitaria Léilis Reis
             </span>
           </div>
 
@@ -29,7 +31,7 @@ export const Header: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="font-cute text-lg text-gray-600 hover:text-bubble-pink transition-colors"
+                className="font-cute text-lg text-chocolate-light hover:text-main-pink transition-colors font-medium"
               >
                 {item.label}
               </a>
@@ -38,7 +40,7 @@ export const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-600 hover:text-bubble-pink"
+            className="md:hidden p-2 text-chocolate hover:text-main-pink"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -48,13 +50,13 @@ export const Header: React.FC = () => {
 
       {/* Mobile Nav */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
+        <div className="md:hidden bg-white border-t border-soft-pink shadow-lg">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-bubble-pink hover:bg-pink-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-chocolate hover:text-main-pink hover:bg-mint-light"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
