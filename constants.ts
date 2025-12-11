@@ -17,7 +17,7 @@ export const PRODUCTS: Product[] = [
     description: "1 Kg bolo + 10 Doces", 
     price: 70.00,
     // EDITE AQUI O CAMINHO DA IMAGEM DO KIT 1:
-    image: "assets/kit-1.png" 
+    image: "assets/kit-1.jpg" 
   },
   { 
     id: 2, 
