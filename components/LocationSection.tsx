@@ -7,7 +7,7 @@ export const LocationSection: React.FC = () => {
     <section id="localizacao" className="py-16 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold text-chocolate font-cute">
+          <h2 className="text-3xl font-extrabold text-brand-brown font-cute">
             Venha nos Visitar
           </h2>
           <p className="mt-4 text-lg text-gray-500">
@@ -20,36 +20,36 @@ export const LocationSection: React.FC = () => {
           <div className="space-y-6">
             
             <ScrollReveal animation="animate__fadeInLeft" delay="0.1s">
-              <div className="bg-mint-light/50 p-6 rounded-xl shadow-sm flex items-center gap-4 border border-mint-dark">
+              <div className="bg-brand-cream p-6 rounded-xl shadow-sm flex items-center gap-4 border border-brand-green/20">
                 <div className="bg-white p-3 rounded-full flex-shrink-0 shadow-sm">
-                  <MapPin className="h-6 w-6 text-main-pink" />
+                  <MapPin className="h-6 w-6 text-brand-green" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-chocolate font-cute">Endereço</h4>
+                  <h4 className="text-lg font-bold text-brand-brown font-cute">Endereço</h4>
                   <p className="text-gray-700">Retirada no Local (Cuiabá - MT)</p>
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="animate__fadeInLeft" delay="0.2s">
-              <div className="bg-mint-light/50 p-6 rounded-xl shadow-sm flex items-center gap-4 border border-mint-dark">
+              <div className="bg-brand-cream p-6 rounded-xl shadow-sm flex items-center gap-4 border border-brand-green/20">
                 <div className="bg-white p-3 rounded-full flex-shrink-0 shadow-sm">
-                  <Phone className="h-6 w-6 text-main-pink" />
+                  <Phone className="h-6 w-6 text-brand-green" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-chocolate font-cute">Contato</h4>
+                  <h4 className="text-lg font-bold text-brand-brown font-cute">Contato</h4>
                   <p className="text-gray-700">(65) 9255-5047</p>
                 </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal animation="animate__fadeInLeft" delay="0.3s">
-              <div className="bg-mint-light/50 p-6 rounded-xl shadow-sm flex items-center gap-4 border border-mint-dark">
+              <div className="bg-brand-cream p-6 rounded-xl shadow-sm flex items-center gap-4 border border-brand-green/20">
                 <div className="bg-white p-3 rounded-full flex-shrink-0 shadow-sm">
-                  <Clock className="h-6 w-6 text-main-pink" />
+                  <Clock className="h-6 w-6 text-brand-green" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold text-chocolate font-cute">Horário</h4>
+                  <h4 className="text-lg font-bold text-brand-brown font-cute">Horário</h4>
                   <p className="text-gray-700">Segunda a Sábado (Consulte horários)</p>
                 </div>
               </div>
@@ -60,7 +60,7 @@ export const LocationSection: React.FC = () => {
                 href="https://waze.com/ul?q=Cuiaba" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-3 bg-brick-orange text-white text-lg font-bold py-4 px-6 rounded-xl shadow-lg hover:bg-orange-700 hover:shadow-xl transition-all transform hover:-translate-y-1"
+                className="w-full flex items-center justify-center gap-3 bg-brand-green text-white text-lg font-bold py-4 px-6 rounded-xl shadow-lg hover:bg-green-800 hover:shadow-xl transition-all transform hover:-translate-y-1"
               >
                 <Navigation className="h-6 w-6" />
                 Abrir no Waze

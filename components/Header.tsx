@@ -11,16 +11,16 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-soft-pink">
+    <header className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm shadow-sm border-b border-brand-green/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="bg-soft-pink p-2 rounded-full">
-              <Cake className="h-6 w-6 text-chocolate" />
+            <div className="bg-brand-green p-2 rounded-full shadow-sm">
+              <Cake className="h-6 w-6 text-white" />
             </div>
-            <span className="font-cute text-2xl text-chocolate font-bold">
+            <span className="font-cute text-2xl text-brand-brown font-bold">
               Confeitaria Léilis Reis
             </span>
           </div>
@@ -31,7 +31,7 @@ export const Header: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="font-cute text-lg text-chocolate-light hover:text-main-pink transition-colors font-medium"
+                className="font-cute text-lg text-brand-brown-light hover:text-brand-green transition-colors font-medium"
               >
                 {item.label}
               </a>
@@ -40,7 +40,7 @@ export const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-chocolate hover:text-main-pink"
+            className="md:hidden p-2 text-brand-brown hover:text-brand-green"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -50,13 +50,13 @@ export const Header: React.FC = () => {
 
       {/* Mobile Nav */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-soft-pink shadow-lg">
+        <div className="md:hidden bg-brand-cream border-t border-brand-green/20 shadow-lg">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-chocolate hover:text-main-pink hover:bg-mint-light"
+                className="block px-3 py-2 rounded-md text-base font-medium text-brand-brown hover:text-brand-green hover:bg-white/50"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}

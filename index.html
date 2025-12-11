@@ -12,13 +12,10 @@
         theme: {
           extend: {
             colors: {
-              'mint-light': '#E0F2F1', // Fundo Geral Verde Água/Menta
-              'mint-dark': '#B2DFDB',
-              'chocolate': '#4E342E',  // Texto Principal
-              'chocolate-light': '#5D4037',
-              'soft-pink': '#F8BBD0',  // Detalhes suaves
-              'main-pink': '#EC407A',  // Botões
-              'brick-orange': '#E64A19',
+              'brand-cream': '#F1E5DD', // Rosa Claro/Beige (Fundo)
+              'brand-green': '#8DB28D', // Verde (Detalhes/Botões)
+              'brand-brown': '#4E342E', // Marrom Chocolate (Texto)
+              'brand-brown-light': '#6D4C41',
             },
             fontFamily: {
               'cute': ['Fredoka', 'sans-serif'],
@@ -41,7 +38,7 @@
 }
 </script>
 </head>
-  <body class="bg-mint-light font-body text-chocolate">
+  <body class="bg-brand-cream font-body text-brand-brown">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

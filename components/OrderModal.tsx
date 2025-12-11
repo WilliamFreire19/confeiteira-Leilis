@@ -32,7 +32,6 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product
       });
 
       // Extrair peso do bolo (procura por "X Kg" na descrição ou nome)
-      // Ex: "Kit 06 - 3 Kg" ou "3 Kg bolo"
       const weightRegex = /(\d+)\s*Kg/i;
       const match = product.description.match(weightRegex) || product.name.match(weightRegex);
       
@@ -117,19 +116,19 @@ Gostaria de orçar o *${product.name}*.
     <div className="fixed inset-0 z-[60] overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div 
-          className="fixed inset-0 bg-chocolate/50 bg-opacity-75 transition-opacity backdrop-blur-sm" 
+          className="fixed inset-0 bg-brand-brown/50 bg-opacity-75 transition-opacity backdrop-blur-sm" 
           aria-hidden="true"
           onClick={onClose}
         ></div>
 
         <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div className="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full border border-soft-pink">
-          <div className="bg-main-pink px-4 py-3 flex justify-between items-center">
+        <div className="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full border border-brand-green/30">
+          <div className="bg-brand-green px-4 py-3 flex justify-between items-center">
              <h3 className="text-lg leading-6 font-bold text-white font-cute" id="modal-title">
               Orçamento: {product.name}
             </h3>
-            <button onClick={onClose} className="text-white hover:text-pink-100 transition-colors">
+            <button onClick={onClose} className="text-white hover:text-green-100 transition-colors">
               <X size={24} />
             </button>
           </div>
@@ -139,10 +138,10 @@ Gostaria de orçar o *${product.name}*.
               
               {/* Name */}
               <div>
-                <label className="block text-sm font-bold text-chocolate mb-1">Nome do Cliente <span className="text-main-pink">*</span></label>
+                <label className="block text-sm font-bold text-brand-brown mb-1">Nome do Cliente <span className="text-brand-green">*</span></label>
                 <input
                   type="text"
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-main-pink focus:border-main-pink sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
                   value={form.customerName}
                   onChange={(e) => setForm({...form, customerName: e.target.value})}
                   placeholder="Seu nome completo"
@@ -150,10 +149,10 @@ Gostaria de orçar o *${product.name}*.
               </div>
 
               {/* Batter */}
-              <div className="bg-mint-light/30 p-3 rounded-lg border border-mint-dark/20">
-                <label className="block text-sm font-bold text-chocolate mb-1">Massa do Bolo</label>
+              <div className="bg-brand-cream p-3 rounded-lg border border-brand-green/20">
+                <label className="block text-sm font-bold text-brand-brown mb-1">Massa do Bolo</label>
                 <select
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-main-pink focus:border-main-pink sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
                   value={form.batter}
                   onChange={(e) => setForm({...form, batter: e.target.value})}
                 >
@@ -163,14 +162,14 @@ Gostaria de orçar o *${product.name}*.
                 
                 {/* Avisos Dinâmicos de Massa */}
                 {form.batter === 'Chocolate' && (
-                  <div className="mt-2 text-xs flex items-start text-brick-orange font-semibold animate__animated animate__fadeIn">
+                  <div className="mt-2 text-xs flex items-start text-orange-600 font-semibold animate__animated animate__fadeIn">
                     <AlertTriangle className="w-4 h-4 mr-1 flex-shrink-0" />
                     ⚠️ Atenção: Somente com 1 dia de antecedência.
                   </div>
                 )}
                 {form.batter === 'Colorida' && (
-                  <div className="mt-2 text-xs flex items-start text-chocolate font-semibold animate__animated animate__fadeIn">
-                     <AlertTriangle className="w-4 h-4 mr-1 flex-shrink-0 text-main-pink" />
+                  <div className="mt-2 text-xs flex items-start text-brand-brown font-semibold animate__animated animate__fadeIn">
+                     <AlertTriangle className="w-4 h-4 mr-1 flex-shrink-0 text-brand-green" />
                      <span>
                         ⚠️ Acréscimo de R$ 10,00 por kg.
                         <br/>
@@ -182,9 +181,9 @@ Gostaria de orçar o *${product.name}*.
 
               {/* Filling */}
               <div>
-                <label className="block text-sm font-bold text-chocolate mb-1">Recheio Preferido</label>
+                <label className="block text-sm font-bold text-brand-brown mb-1">Recheio Preferido</label>
                 <select
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-main-pink focus:border-main-pink sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
                   value={form.filling}
                   onChange={(e) => setForm({...form, filling: e.target.value})}
                 >
@@ -195,19 +194,19 @@ Gostaria de orçar o *${product.name}*.
 
               {/* Addons */}
               <div>
-                <label className="block text-sm font-bold text-chocolate mb-2">Adicionais Extras</label>
+                <label className="block text-sm font-bold text-brand-brown mb-2">Adicionais Extras</label>
                 <div className="grid grid-cols-1 gap-2 bg-gray-50 p-3 rounded-lg">
                   {ADDONS.map(addon => (
                     <div key={addon.id} className="flex items-center">
                       <input
                         id={`addon-${addon.id}`}
                         type="checkbox"
-                        className="h-4 w-4 text-main-pink focus:ring-main-pink border-gray-300 rounded cursor-pointer"
+                        className="h-4 w-4 text-brand-green focus:ring-brand-green border-gray-300 rounded cursor-pointer"
                         checked={form.selectedAddons.includes(addon.id)}
                         onChange={() => handleAddonChange(addon.id)}
                       />
                       <label htmlFor={`addon-${addon.id}`} className="ml-2 block text-sm text-gray-700 cursor-pointer">
-                        {addon.name} <span className="text-main-pink font-semibold">(+ R$ {addon.price.toFixed(2)})</span>
+                        {addon.name} <span className="text-brand-green font-semibold">(+ R$ {addon.price.toFixed(2)})</span>
                       </label>
                     </div>
                   ))}
@@ -216,10 +215,10 @@ Gostaria de orçar o *${product.name}*.
 
               {/* Notes */}
               <div>
-                <label className="block text-sm font-bold text-chocolate mb-1">Observações</label>
+                <label className="block text-sm font-bold text-brand-brown mb-1">Observações</label>
                 <textarea
                   rows={2}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-main-pink focus:border-main-pink sm:text-sm"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
                   value={form.notes}
                   onChange={(e) => setForm({...form, notes: e.target.value})}
                   placeholder="Detalhes extras..."
@@ -227,10 +226,10 @@ Gostaria de orçar o *${product.name}*.
               </div>
 
               {/* Total */}
-              <div className="mt-4 p-4 bg-mint-light rounded-lg border border-mint-dark/30">
+              <div className="mt-4 p-4 bg-brand-cream rounded-lg border border-brand-green/30">
                 <div className="flex justify-between items-center">
-                  <span className="text-chocolate font-medium">Valor Estimado:</span>
-                  <span className="text-2xl font-bold text-main-pink font-cute">
+                  <span className="text-brand-brown font-medium">Valor Estimado:</span>
+                  <span className="text-2xl font-bold text-brand-green font-cute">
                     R$ {calculateTotal().toFixed(2)}
                   </span>
                 </div>
@@ -246,7 +245,7 @@ Gostaria de orçar o *${product.name}*.
             <button
               type="button"
               className={`w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-3 text-base font-bold text-white sm:ml-3 sm:w-auto sm:text-sm transition-all transform hover:scale-105 ${
-                form.customerName.trim() ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-400 cursor-not-allowed'
+                form.customerName.trim() ? 'bg-brand-green hover:bg-green-700' : 'bg-gray-400 cursor-not-allowed'
               }`}
               onClick={handleSendToWhatsApp}
               disabled={!form.customerName.trim()}

@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   description: string;
   price: number;
+  image: string; // Caminho da imagem (Ex: "assets/meu-bolo.jpg")
 }
 
 export interface AddOn {

@@ -23,7 +23,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-body text-chocolate">
+    <div className="min-h-screen flex flex-col font-body text-brand-brown bg-brand-cream">
       <Header />
       <main className="flex-grow">
         <Hero />
