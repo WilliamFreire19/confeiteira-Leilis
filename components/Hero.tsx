@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
         <div className="w-full relative overflow-hidden bg-brand-cream group">
             <img
               className="w-full h-auto object-contain shadow-sm"
-              src="/assets/hero-bg.jpg"
+              src="public/assets/hero-bg.jpg"
               alt="Confeitaria Léilis Reis - Doces Finos"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
