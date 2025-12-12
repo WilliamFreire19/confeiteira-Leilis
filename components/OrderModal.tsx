@@ -118,14 +118,14 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product
 Olá! Me chamo *${form.customerName}*.
 Gostaria de orçar o *${productTitle}*.
 
-⚖️ *Tipo:* ${isCakeByKg ? 'Bolo por Kg' : 'Kit Festa'}
-🧁 *Massa:* ${form.batter || 'A definir'}${extraCostsText}
-🍰 *Recheio:* ${form.filling || 'A definir'}
-✨ *Adicionais:* ${addonsString || 'Nenhum'}
+ *Tipo:* ${isCakeByKg ? 'Bolo por Kg' : 'Kit Festa'}
+ *Massa:* ${form.batter || 'A definir'}${extraCostsText}
+ *Recheio:* ${form.filling || 'A definir'}
+ *Adicionais:* ${addonsString || 'Nenhum'}
 
-📝 *Obs:* ${form.notes || 'Nenhuma'}
+ *Obs:* ${form.notes || 'Nenhuma'}
 
-💰 *Valor Estimado:* R$ ${calculateTotal().toFixed(2)}
+ *Valor Estimado:* R$ ${calculateTotal().toFixed(2)}
     `.trim();
 
     const encodedMessage = encodeURIComponent(message);
