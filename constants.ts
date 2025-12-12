@@ -87,13 +87,13 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const ADDONS: AddOn[] = [
-  { id: 'topper_simples', name: 'Topper Simples', price: 30.00 },
-  { id: 'topper_3d', name: 'Topper 3D', price: 50.00 },
+  { id: 'topper_simples', name: 'Topper Simples', price: 25.00 },
+  { id: 'topper_3d', name: 'Topper 3D', price: 55.00 },
   { id: 'papel_arroz', name: 'Papel Arroz', price: 20.00 },
-  { id: 'raspas', name: 'Raspas de Chocolate Nobre', price: 8.00 },
+  { id: 'raspas', name: 'Raspas de Chocolate Nobre', price: 10.00 },
   { id: 'geleia', name: 'Geleia', price: 12.00 },
   { id: 'glitter', name: 'Glitter', price: 8.00 },
 ];
 
 export const CAKE_BATTERS = ["Branca", "Chocolate", "Colorida"];
-export const CAKE_FILLINGS = ["Ninho", "Brigadeiro", "Coco", "Doce de Leite", "Abacaxi", "Morango"];
+export const CAKE_FILLINGS = ["Creme de Coco", "Morango com creme", "Pêssego e creme", "NInho cremoso", "Chocolate creme", "4 leites cremoso"];
