@@ -13,6 +13,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onOrderClick }) => {
     <section id="kits" className="py-16 bg-brand-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-12">
+          <h2 className="text-base text-brand-green font-semibold tracking-wide uppercase font-cute">Nossos Doces Finos</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-brand-brown sm:text-4xl font-cute">
             Kits Especiais para Sua Celebração
           </p>
@@ -28,7 +29,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onOrderClick }) => {
               <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col w-full border border-brand-green/10">
                 
                 {/* Área da Imagem */}
-                <div className="w-full h-64 overflow-hidden bg-white relative flex items-center justify-center p-4">
+                <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-white xl:aspect-w-7 xl:aspect-h-8 h-64 relative flex items-center justify-center p-4">
                    
                    {/* 
                       AQUI ESTA A IMAGEM 
