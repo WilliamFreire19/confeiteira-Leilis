@@ -18,7 +18,6 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ onOrderClick }) => {
     <section id="kits" className="py-16 bg-brand-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-8">
-          <h2 className="text-base text-brand-green font-semibold tracking-wide uppercase font-cute">Nossos Doces Finos</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-brand-brown sm:text-4xl font-cute">
             Escolha sua Delícia
           </p>
