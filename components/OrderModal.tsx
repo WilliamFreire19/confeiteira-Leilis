@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Check, AlertTriangle } from 'lucide-react';
+import { X, Check, AlertTriangle, Scale } from 'lucide-react';
 import { Product, OrderFormState } from '../types';
-import { ADDONS, CAKE_BATTERS, CAKE_FILLINGS, WHATSAPP_NUMBER } from '../constants';
+import { ADDONS, CAKE_BATTERS, KIT_FILLINGS_DEFAULT, WHATSAPP_NUMBER } from '../constants';
 
 interface OrderModalProps {
   isOpen: boolean;
@@ -10,38 +10,45 @@ interface OrderModalProps {
 }
 
 export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => {
+  const isCakeByKg = product.category === 'cake';
+
   const [form, setForm] = useState<OrderFormState>({
     customerName: '',
     batter: '',
     filling: '',
     selectedAddons: [],
-    notes: ''
+    notes: '',
+    weight: isCakeByKg ? 1.5 : 1 // Valor inicial padrão
   });
 
-  const [cakeWeight, setCakeWeight] = useState<number>(0);
+  const [kitWeight, setKitWeight] = useState<number>(0);
 
   // Reset form when product changes or modal opens
   useEffect(() => {
     if (isOpen) {
+      // Tentar extrair peso do kit automaticamente
+      let initialWeight = 1;
+      if (!isCakeByKg) {
+        const weightRegex = /(\d+)\s*Kg/i;
+        const match = product.description.match(weightRegex) || product.name.match(weightRegex);
+        if (match && match[1]) {
+           initialWeight = parseInt(match[1], 10);
+        }
+      } else {
+        initialWeight = 1.5; // Peso mínimo sugerido para bolo por kg
+      }
+
+      setKitWeight(initialWeight);
       setForm({
         customerName: '',
         batter: '',
         filling: '',
         selectedAddons: [],
-        notes: ''
+        notes: '',
+        weight: initialWeight
       });
-
-      // Extrair peso do bolo (procura por "X Kg" na descrição ou nome)
-      const weightRegex = /(\d+)\s*Kg/i;
-      const match = product.description.match(weightRegex) || product.name.match(weightRegex);
-      
-      if (match && match[1]) {
-        setCakeWeight(parseInt(match[1], 10));
-      } else {
-        setCakeWeight(1); // Default fallback
-      }
     }
-  }, [isOpen, product]);
+  }, [isOpen, product, isCakeByKg]);
 
   const handleAddonChange = (addonId: string) => {
     setForm(prev => {
@@ -55,8 +62,16 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product
   };
 
   const calculateTotal = () => {
-    // Valor Base
-    let total = product.price;
+    const activeWeight = isCakeByKg ? (form.weight || 0) : kitWeight;
+    let total = 0;
+
+    if (isCakeByKg) {
+      // Preço Base = Peso * Preço do Kg (Tier)
+      total = activeWeight * product.price;
+    } else {
+      // Preço Fixo do Kit
+      total = product.price;
+    }
 
     // Valor Adicionais Checkbox
     const addonsTotal = form.selectedAddons.reduce((sum, addonId) => {
@@ -66,8 +81,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product
     total += addonsTotal;
 
     // Valor Adicional Massa Colorida
+    // Lógica: R$ 10 por Kg de bolo
     if (form.batter === 'Colorida') {
-        total += (cakeWeight * 10);
+        total += (activeWeight * 10);
     }
 
     return total;
@@ -78,30 +94,38 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product
       alert("Por favor, preencha seu nome.");
       return;
     }
+    if (isCakeByKg && (!form.weight || form.weight <= 0)) {
+        alert("Por favor, informe o peso aproximado do bolo.");
+        return;
+    }
 
+    const activeWeight = isCakeByKg ? form.weight : kitWeight;
     const addonsNames = form.selectedAddons
       .map(id => ADDONS.find(a => a.id === id)?.name)
       .filter(Boolean);
 
-    // Se massa colorida, adicionar essa info explicitamente nos adicionais/obs para clareza
     let extraCostsText = "";
     if (form.batter === 'Colorida') {
-        extraCostsText = ` (+ R$ ${(cakeWeight * 10).toFixed(2)} ref. Massa Colorida ${cakeWeight}kg)`;
+        extraCostsText = ` (+ R$ ${(activeWeight! * 10).toFixed(2)} ref. Massa Colorida ${activeWeight}kg)`;
     }
 
     const addonsString = addonsNames.join(', ');
+    const productTitle = isCakeByKg 
+        ? `${product.name} (${activeWeight} Kg)` 
+        : product.name;
 
     const message = `
 Olá! Me chamo *${form.customerName}*.
-Gostaria de orçar o *${product.name}*.
+Gostaria de orçar o *${productTitle}*.
 
- *Massa:* ${form.batter || 'A definir'}${extraCostsText}
- *Recheio:* ${form.filling || 'A definir'}
- *Adicionais:* ${addonsString || 'Nenhum'}
+⚖️ *Tipo:* ${isCakeByKg ? 'Bolo por Kg' : 'Kit Festa'}
+🧁 *Massa:* ${form.batter || 'A definir'}${extraCostsText}
+🍰 *Recheio:* ${form.filling || 'A definir'}
+✨ *Adicionais:* ${addonsString || 'Nenhum'}
 
- *Obs:* ${form.notes || 'Nenhuma'}
+📝 *Obs:* ${form.notes || 'Nenhuma'}
 
- *Valor Estimado:* R$ ${calculateTotal().toFixed(2)}
+💰 *Valor Estimado:* R$ ${calculateTotal().toFixed(2)}
     `.trim();
 
     const encodedMessage = encodeURIComponent(message);
@@ -111,6 +135,11 @@ Gostaria de orçar o *${product.name}*.
   };
 
   if (!isOpen) return null;
+
+  // Determinar lista de recheios
+  const fillingOptions = isCakeByKg 
+    ? (product.availableFillings || []) 
+    : KIT_FILLINGS_DEFAULT;
 
   return (
     <div className="fixed inset-0 z-[60] overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -126,7 +155,7 @@ Gostaria de orçar o *${product.name}*.
         <div className="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full border border-brand-green/30">
           <div className="bg-brand-green px-4 py-3 flex justify-between items-center">
              <h3 className="text-lg leading-6 font-bold text-white font-cute" id="modal-title">
-              Orçamento: {product.name}
+              {isCakeByKg ? 'Montar Bolo' : `Orçamento: ${product.name}`}
             </h3>
             <button onClick={onClose} className="text-white hover:text-green-100 transition-colors">
               <X size={24} />
@@ -135,6 +164,15 @@ Gostaria de orçar o *${product.name}*.
           
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="space-y-4">
+
+              {/* Header Info para Bolo por Kg */}
+              {isCakeByKg && (
+                  <div className="bg-brand-cream/50 p-3 rounded-lg text-sm text-brand-brown mb-2">
+                      <span className="font-bold">{product.name}</span>
+                      <br/>
+                      Preço da Categoria: <span className="font-bold text-brand-green">R$ {product.price.toFixed(2)} /kg</span>
+                  </div>
+              )}
               
               {/* Name */}
               <div>
@@ -147,6 +185,28 @@ Gostaria de orçar o *${product.name}*.
                   placeholder="Seu nome completo"
                 />
               </div>
+
+               {/* Peso (Apenas para Bolo por Kg) */}
+               {isCakeByKg && (
+                <div>
+                   <label className="block text-sm font-bold text-brand-brown mb-1">Peso Desejado (Kg) <span className="text-brand-green">*</span></label>
+                   <div className="relative rounded-md shadow-sm">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Scale className="h-5 w-5 text-gray-400" />
+                        </div>
+                        <input
+                            type="number"
+                            step="0.5"
+                            min="1"
+                            className="focus:ring-brand-green focus:border-brand-green block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2"
+                            placeholder="Ex: 1.5"
+                            value={form.weight}
+                            onChange={(e) => setForm({...form, weight: parseFloat(e.target.value)})}
+                        />
+                   </div>
+                   <p className="text-xs text-gray-500 mt-1">Peso mínimo recomendado: 1 Kg</p>
+                </div>
+               )}
 
               {/* Batter */}
               <div className="bg-brand-cream p-3 rounded-lg border border-brand-green/20">
@@ -173,7 +233,9 @@ Gostaria de orçar o *${product.name}*.
                      <span>
                         ⚠️ Acréscimo de R$ 10,00 por kg.
                         <br/>
-                        <span className="text-gray-500 font-normal">Bolo estimado em {cakeWeight}kg (+ R$ {(cakeWeight * 10).toFixed(2)})</span>
+                        <span className="text-gray-500 font-normal">
+                             Custo Extra: + R$ {((isCakeByKg ? (form.weight || 0) : kitWeight) * 10).toFixed(2)}
+                        </span>
                      </span>
                   </div>
                 )}
@@ -181,21 +243,23 @@ Gostaria de orçar o *${product.name}*.
 
               {/* Filling */}
               <div>
-                <label className="block text-sm font-bold text-brand-brown mb-1">Recheio Preferido</label>
+                <label className="block text-sm font-bold text-brand-brown mb-1">
+                    {isCakeByKg ? 'Escolha o Recheio (Incluso no valor do Kg)' : 'Recheio Preferido'}
+                </label>
                 <select
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
                   value={form.filling}
                   onChange={(e) => setForm({...form, filling: e.target.value})}
                 >
                   <option value="">Selecione uma opção</option>
-                  {CAKE_FILLINGS.map(f => <option key={f} value={f}>{f}</option>)}
+                  {fillingOptions.map(f => <option key={f} value={f}>{f}</option>)}
                 </select>
               </div>
 
               {/* Addons */}
               <div>
                 <label className="block text-sm font-bold text-brand-brown mb-2">Adicionais Extras</label>
-                <div className="grid grid-cols-1 gap-2 bg-gray-50 p-3 rounded-lg">
+                <div className="grid grid-cols-1 gap-2 bg-gray-50 p-3 rounded-lg max-h-40 overflow-y-auto">
                   {ADDONS.map(addon => (
                     <div key={addon.id} className="flex items-center">
                       <input
@@ -229,9 +293,16 @@ Gostaria de orçar o *${product.name}*.
               <div className="mt-4 p-4 bg-brand-cream rounded-lg border border-brand-green/30">
                 <div className="flex justify-between items-center">
                   <span className="text-brand-brown font-medium">Valor Estimado:</span>
-                  <span className="text-2xl font-bold text-brand-green font-cute">
-                    R$ {calculateTotal().toFixed(2)}
-                  </span>
+                  <div className="text-right">
+                    <span className="text-2xl font-bold text-brand-green font-cute block">
+                        R$ {calculateTotal().toFixed(2)}
+                    </span>
+                    {isCakeByKg && (
+                        <span className="text-xs text-gray-500">
+                             Ref. {form.weight} kg
+                        </span>
+                    )}
+                  </div>
                 </div>
                 <p className="text-xs text-center mt-2 text-gray-500">
                    *Valor sujeito a confirmação no WhatsApp

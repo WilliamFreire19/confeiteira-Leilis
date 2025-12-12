@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { ADDRESS_TEXT, WAZE_LINK, MAPS_EMBED_URL } from '../constants';
 
 export const LocationSection: React.FC = () => {
   return (
@@ -26,7 +27,7 @@ export const LocationSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-brand-brown font-cute">Endereço</h4>
-                  <p className="text-gray-700">Retirada no Local (Cuiabá - MT)</p>
+                  <p className="text-gray-700">{ADDRESS_TEXT}</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -57,7 +58,7 @@ export const LocationSection: React.FC = () => {
 
             <ScrollReveal animation="animate__fadeInUp" delay="0.4s" className="pt-4">
               <a 
-                href="https://waze.com/ul?q=Cuiaba" 
+                href={WAZE_LINK}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-3 bg-brand-green text-white text-lg font-bold py-4 px-6 rounded-xl shadow-lg hover:bg-green-800 hover:shadow-xl transition-all transform hover:-translate-y-1"
@@ -72,7 +73,7 @@ export const LocationSection: React.FC = () => {
           <ScrollReveal animation="animate__fadeInRight" delay="0.4s" className="h-full w-full">
             <div className="h-full min-h-[400px] bg-gray-200 rounded-2xl overflow-hidden shadow-lg border-4 border-white">
                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123164.38209867086!2d-56.16877028135891!3d-15.596081372545934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db187541629d3%3A0x673995cb70d3810!2sCuiab%C3%A1%2C%20MT!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                  src={MAPS_EMBED_URL}
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, minHeight: '400px' }} 

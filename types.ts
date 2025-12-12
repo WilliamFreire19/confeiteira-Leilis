@@ -3,7 +3,9 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  image: string; // Caminho da imagem (Ex: "assets/meu-bolo.jpg")
+  image: string;
+  category: 'kit' | 'cake'; // Diferencia Kit de Bolo por Kg
+  availableFillings?: string[]; // Lista de recheios específicos para este produto (se for bolo por kg)
 }
 
 export interface AddOn {
@@ -18,4 +20,5 @@ export interface OrderFormState {
   filling: string;
   selectedAddons: string[];
   notes: string;
+  weight?: number; // Peso digitado pelo usuário (apenas para bolos por kg)
 }
