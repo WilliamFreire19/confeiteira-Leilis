@@ -35,7 +35,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product
            initialWeight = parseInt(match[1], 10);
         }
       } else {
-        initialWeight = 1.5; // Peso mínimo sugerido para bolo por kg
+        initialWeight = 1; // Peso mínimo sugerido para bolo por kg
       }
 
       setKitWeight(initialWeight);
