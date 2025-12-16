@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
               <Cake className="h-6 w-6 text-white" />
             </div>
             <span className="font-cute text-2xl text-brand-brown font-bold">
-              Confeitaria Léilis Reis
+              Confeitaria Da Léilis Reis
             </span>
           </div>
 
