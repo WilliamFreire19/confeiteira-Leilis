@@ -1,9 +1,9 @@
 import { Product, AddOn } from './types';
 
 export const WHATSAPP_NUMBER = "556592555047";
-export const ADDRESS_TEXT = "Av. Tancredo Neves - Tancredo Neves, Cuiabá - MT, 78053-600";
-export const WAZE_LINK = "https://waze.com/ul?q=Av.+Tancredo+Neves+Cuiaba";
-export const MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3842.667232258882!2d-56.0718535!3d-15.6095568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db1e779010025%3A0x6331006509633215!2sAv.%20Tancredo%20Neves%20-%20Jardim%20Kennedy%2C%20Cuiab%C3%A1%20-%20MT!5e0!3m2!1spt-BR!2sbr!4v1709220000000!5m2!1spt-BR!2sbr";
+export const ADDRESS_TEXT = "Rua C1, nº 22 Bairro Residencial Padova Cuiabá – MT";
+export const WAZE_LINK = "https://waze.com/ul?q=Rua+C1+22+Bairro+Residencial+Padova+Cuiaba+MT&navigate=yes";
+export const MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d960.9602123100738!2d-56.04984563044103!3d-15.546660199066222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db0c733b5720b%3A0xb06afc7c26e09dd9!2sR.%20C1%2C%2015-48%20-%20Res.%20P%C3%A1dova%2C%20Cuiab%C3%A1%20-%20MT%2C%2078056-348!5e0!3m2!1spt-BR!2sbr!4v1765910465812!5m2!1spt-BR!2sbr";
 
 /* 
   LISTAS DE RECHEIOS POR FAIXA DE PREÇO

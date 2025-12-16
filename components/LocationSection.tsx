@@ -51,7 +51,7 @@ export const LocationSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-brand-brown font-cute">Horário</h4>
-                  <p className="text-gray-700">Segunda a Sábado (Consulte horários)</p>
+                  <p className="text-gray-700">Seg - Quin: 09 - 20h | Sex - Dom: 09 - 18h</p>
                 </div>
               </div>
             </ScrollReveal>
