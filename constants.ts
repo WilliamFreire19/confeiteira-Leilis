@@ -9,30 +9,30 @@ export const MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1
   LISTAS DE RECHEIOS POR FAIXA DE PREÇO
 */
 const FILLINGS_65 = [
-  "Creme", "Coco", "Baunilha", "Beijinho cremoso", "Brigadeiro cremoso", 
-  "Mousse doce de leite", "Creme de pêssego", "Creme de morango", 
+  "Creme", "Coco", "Baunilha", "Beijinho cremoso", "Brigadeiro cremoso",
+  "Mousse doce de leite", "Creme de pêssego", "Creme de morango",
   "Creme de abacaxi", "Salada de frutas (morango, abacaxi, pêssego)", "Paçoca"
 ];
 
 const FILLINGS_70 = [
-  "Prestígio", "Ninho cremoso", "Chocolate cremoso (com raspas nobre)", 
+  "Prestígio", "Ninho cremoso", "Chocolate cremoso (com raspas nobre)",
   "Doce de leite", "Dois amores"
 ];
 
 const FILLINGS_75 = [
-  "Ninho com brigadeiro", "Doce de leite com ameixa", "Quatro leites", 
+  "Ninho com brigadeiro", "Doce de leite com ameixa", "Quatro leites",
   "Sensação", "Danete", "Beijinho com abacaxi e ninho"
 ];
 
 const FILLINGS_85 = [
-  "Brigadeiro maracujá", "Sonho de valsa", "Beijinho com abacaxi", 
-  "Baba de moça", "4 leites e Oreo", 
+  "Brigadeiro maracujá", "Sonho de valsa", "Beijinho com abacaxi",
+  "Baba de moça", "4 leites e Oreo",
   "Mousse (Limão, Maracujá, Chocolate, Laka, Ninho, Morango)",
   "Ninho com geleia de morango", "4 leites com morango", "Ouro Branco"
 ];
 
 const FILLINGS_90 = [
-  "Olho de sogra (ameixa e damasco)", 
+  "Olho de sogra (ameixa e damasco)",
   "Delícia de morango (creme, raspas branco, ninho, nutella, alpino)"
 ];
 
@@ -49,44 +49,44 @@ export const KIT_FILLINGS_DEFAULT = ["Creme de Coco", "Morango com creme", "Pês
 
 export const PRODUCTS: Product[] = [
   // --- KITS FESTA ---
-  { 
-    id: 1, name: "Kit 01", description: "1 Kg bolo + 10 Doces", price: 70.00, 
-    image: "/assets/kit-1.jpg", category: 'kit' 
+  {
+    id: 1, name: "Kit 01", description: "1 Kg bolo + 10 Doces", price: 85.00, //valor antigo 70.00
+    image: "/assets/kit-1.jpg", category: 'kit'
   },
-  { 
-    id: 2, name: "Kit 02", description: "1 Kg bolo + 05 Brigadeiros + 05 Beijinhos + 20 Salgados", price: 85.00, 
+  {
+    id: 2, name: "Kit 02", description: "1 Kg bolo + 05 Brigadeiros + 05 Beijinhos + 20 Salgados", price: 120.00, //valor antigo 85.00
     image: "/assets/kit-2.jpg", category: 'kit'
   },
-  { 
-    id: 3, name: "Kit 03", description: "1 Kg bolo + 7 Brigadeiros + 7 Beijinhos + 50 Salgados", price: 120.00, 
+  {
+    id: 3, name: "Kit 03", description: "1 Kg bolo + 7 Brigadeiros + 7 Beijinhos + 50 Salgados", price: 145.00, //valor antigo 120.00
     image: "/assets/kit-3.jpg", category: 'kit'
   },
-  { 
-    id: 4, name: "Kit 04", description: "1 Kg bolo + 10 Brigadeiros + 10 Beijinhos + 70 Salgados", price: 190.00, 
+  {
+    id: 4, name: "Kit 04", description: "1 Kg bolo + 10 Brigadeiros + 10 Beijinhos + 70 Salgados", price: 220.00, //valor antigo 190.00
     image: "/assets/kit-4.jpg", category: 'kit'
   },
-  { 
-    id: 5, name: "Kit 05", description: "2 Kg bolo + 20 Brigadeiros + 20 Beijinhos + 200 Salgados", price: 260.00, 
+  {
+    id: 5, name: "Kit 05", description: "2 Kg bolo + 20 Brigadeiros + 20 Beijinhos + 200 Salgados", price: 350.00, //valor antigo 260.00
     image: "/assets/kit-5.jpg", category: 'kit'
   },
-  { 
-    id: 6, name: "Kit 06", description: "3 Kg bolo + 25 Brigadeiros + 25 Beijinhos + 300 Salgados", price: 350.00, 
+  {
+    id: 6, name: "Kit 06", description: "3 Kg bolo + 25 Brigadeiros + 25 Beijinhos + 300 Salgados", price: 475.00, //valor antigo 350.00
     image: "/assets/kit-6.jpg", category: 'kit'
   },
-  { 
-    id: 7, name: "Kit 07", description: "4 Kg bolo + 50 Brigadeiros + 50 Beijinhos + 400 Salgados", price: 450.00, 
+  {
+    id: 7, name: "Kit 07", description: "4 Kg bolo + 50 Brigadeiros + 50 Beijinhos + 400 Salgados", price: 600.00, //valor antigo 450.00
     image: "/assets/kit-7.jpg", category: 'kit'
   },
-  { 
-    id: 8, name: "Kit 08", description: "5 Kg bolo + 70 Brigadeiros + 70 Beijinhos + 400 Salgados", price: 600.00, 
+  {
+    id: 8, name: "Kit 08", description: "5 Kg bolo + 70 Brigadeiros + 70 Beijinhos + 400 Salgados", price: 780.00, //valor antigo 600.00
     image: "/assets/kit-8.jpg", category: 'kit'
   },
-  { 
-    id: 9, name: "Kit 09", description: "6 Kg bolo + 100 Brigadeiros + 100 Beijinhos + 700 Salgados", price: 900.00, 
+  {
+    id: 9, name: "Kit 09", description: "6 Kg bolo + 100 Brigadeiros + 100 Beijinhos + 700 Salgados", price: 1040.00, //valor antigo 900.00
     image: "/assets/kit-9.jpg", category: 'kit'
   },
-  { 
-    id: 10, name: "Kit 10", description: "7 Kg bolo + 150 Brigadeiros + 150 Beijinhos + 800 Salgados", price: 1050.00, 
+  {
+    id: 10, name: "Kit 10", description: "7 Kg bolo + 150 Brigadeiros + 150 Beijinhos + 800 Salgados", price: 1500.00, //valor antigo 1050.00
     image: "/assets/kit-10.jpg", category: 'kit'
   },
 
