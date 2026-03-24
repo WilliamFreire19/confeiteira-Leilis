@@ -18,7 +18,6 @@ export const InfoSection: React.FC = () => {
               <br/>
               <span className="font-semibold">Aceitamos:</span> Pix, Débito, Dinheiro.
               <br/>
-              <span className="text-xs text-brand-brown font-bold">Crédito: + R$ 5,00.</span>
             </p>
           </ScrollReveal>
 
