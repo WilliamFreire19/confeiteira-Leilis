@@ -120,7 +120,7 @@ export const PRODUCTS: Product[] = [
     name: "Torta de Frango com Cobertura Pure de Batata",
     description:
       "Pão forma. Recheio frango, uvas passas, milho, ervilha, cenoura, cheiro verde, azeitonas.\n*Se tiver alguma coisa que não goste, por favor nos avise.",
-    price: 85.0,
+    price: 90.0,
     image: "/assets/torta-frango-pure.jpg",
     category: "salgado",
   },
