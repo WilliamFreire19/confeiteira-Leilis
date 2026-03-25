@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { X, Check, AlertTriangle, Scale } from "lucide-react";
+import { X, Check, AlertTriangle, Scale, Plus, Minus } from "lucide-react";
 import { Product, OrderFormState } from "../types";
 import {
   ADDONS,
@@ -479,10 +479,26 @@ Gostaria de orçar o *${product.name}*.`;
                       Quantidade <span className="text-brand-green">*</span>
                     </label>
                     <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setForm({
+                            ...form,
+                            docinhoQuantity: Math.max(
+                              1,
+                              (form.docinhoQuantity || 1) - 1,
+                            ),
+                          })
+                        }
+                        className="p-2 bg-brand-green/20 hover:bg-brand-green/30 rounded-md transition-colors text-brand-green"
+                        aria-label="Diminuir quantidade"
+                      >
+                        <Minus size={18} />
+                      </button>
                       <input
                         type="number"
                         min="1"
-                        className="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
+                        className="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm text-center"
                         value={form.docinhoQuantity || 1}
                         onChange={(e) =>
                           setForm({
@@ -491,7 +507,20 @@ Gostaria de orçar o *${product.name}*.`;
                           })
                         }
                       />
-                      <span className="text-sm text-gray-600 font-medium">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setForm({
+                            ...form,
+                            docinhoQuantity: (form.docinhoQuantity || 1) + 1,
+                          })
+                        }
+                        className="p-2 bg-brand-green/20 hover:bg-brand-green/30 rounded-md transition-colors text-brand-green"
+                        aria-label="Aumentar quantidade"
+                      >
+                        <Plus size={18} />
+                      </button>
+                      <span className="text-sm text-gray-600 font-medium ml-2">
                         cento(s)
                       </span>
                     </div>
@@ -604,10 +633,26 @@ Gostaria de orçar o *${product.name}*.`;
                         Quantidade <span className="text-brand-green">*</span>
                       </label>
                       <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setForm({
+                              ...form,
+                              salgadoQuantity: Math.max(
+                                1,
+                                (form.salgadoQuantity || 1) - 1,
+                              ),
+                            })
+                          }
+                          className="p-2 bg-brand-green/20 hover:bg-brand-green/30 rounded-md transition-colors text-brand-green"
+                          aria-label="Diminuir quantidade"
+                        >
+                          <Minus size={18} />
+                        </button>
                         <input
                           type="number"
                           min="1"
-                          className="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
+                          className="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm text-center"
                           value={form.salgadoQuantity || 1}
                           onChange={(e) =>
                             setForm({
@@ -616,7 +661,20 @@ Gostaria de orçar o *${product.name}*.`;
                             })
                           }
                         />
-                        <span className="text-sm text-gray-600 font-medium">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setForm({
+                              ...form,
+                              salgadoQuantity: (form.salgadoQuantity || 1) + 1,
+                            })
+                          }
+                          className="p-2 bg-brand-green/20 hover:bg-brand-green/30 rounded-md transition-colors text-brand-green"
+                          aria-label="Aumentar quantidade"
+                        >
+                          <Plus size={18} />
+                        </button>
+                        <span className="text-sm text-gray-600 font-medium ml-2">
                           cento(s)
                         </span>
                       </div>
@@ -633,10 +691,26 @@ Gostaria de orçar o *${product.name}*.`;
                         Quantidade <span className="text-brand-green">*</span>
                       </label>
                       <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setForm({
+                              ...form,
+                              salgadoQuantity: Math.max(
+                                1,
+                                (form.salgadoQuantity || 1) - 1,
+                              ),
+                            })
+                          }
+                          className="p-2 bg-brand-green/20 hover:bg-brand-green/30 rounded-md transition-colors text-brand-green"
+                          aria-label="Diminuir quantidade"
+                        >
+                          <Minus size={18} />
+                        </button>
                         <input
                           type="number"
                           min="1"
-                          className="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm"
+                          className="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-brand-green focus:border-brand-green sm:text-sm text-center"
                           value={form.salgadoQuantity || 1}
                           onChange={(e) =>
                             setForm({
@@ -645,7 +719,20 @@ Gostaria de orçar o *${product.name}*.`;
                             })
                           }
                         />
-                        <span className="text-sm text-gray-600 font-medium">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setForm({
+                              ...form,
+                              salgadoQuantity: (form.salgadoQuantity || 1) + 1,
+                            })
+                          }
+                          className="p-2 bg-brand-green/20 hover:bg-brand-green/30 rounded-md transition-colors text-brand-green"
+                          aria-label="Aumentar quantidade"
+                        >
+                          <Plus size={18} />
+                        </button>
+                        <span className="text-sm text-gray-600 font-medium ml-2">
                           unidade(s)
                         </span>
                       </div>
